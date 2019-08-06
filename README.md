@@ -24,4 +24,4 @@ Wrap the forward-backward Butterworth filter from the scipy package so that it c
 
 ![bandpass](./example/bandpass.png)
 
-# [notebook example](./example/xfilter_example.ipynb)
+## [notebook example](./example/xfilter_example.ipynb)
