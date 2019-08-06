@@ -1,8 +1,7 @@
 # xfilter
 Wrap the forward-backward Butterworth filter from the scipy package so that it can be easily used by xarray.DataArray. 
 
-## Example
-[notebook](./example/xfilter_example.ipynb)
+## usage 
 
 		import xarray as xr
 		import numpy as np
@@ -24,3 +23,5 @@ Wrap the forward-backward Butterworth filter from the scipy package so that it c
 		ax.legend()
 
 ![bandpass](./example/bandpass.png)
+
+# [notebook example](./example/xfilter_example.ipynb)
