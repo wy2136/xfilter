@@ -13,7 +13,7 @@ def lowpass_response(cutoff=0.25, order=2, fs=1.0):
     b, a = _lowpass_ba(cutoff=cutoff, order=order, fs=fs)
     f, h = freqz(b=b, a=a, whole=False, fs=fs)
     # the actual order is 2x the given order since a forward-backward filter is appled
-    da = xr.DataArray( ( h*h.conj() ).astype('float'),
+    da = xr.DataArray(h.real**2 + h.imag**2,
         dims='freq', coords=[f,],
         name='response')
     da.attrs['info'] = f'Butterworth {order}-order forward-backward lowpass response'
@@ -27,7 +27,7 @@ def highpass_response(cutoff=0.25, order=2, fs=1.0):
     b, a = _highpass_ba(cutoff=cutoff, order=order, fs=fs)
     f, h = freqz(b=b, a=a, whole=False, fs=fs)
     # the actual order is 2x the given order since a forward-backward filter is appled
-    da = xr.DataArray( ( h*h.conj() ).astype('float'),
+    da = xr.DataArray(h.real**2 + h.imag**2,
         dims='freq', coords=[f,],
         name='response')
     da.attrs['info'] = f'Butterworth {order}-order forward-backward highpass response'
@@ -41,7 +41,7 @@ def bandpass_response(cutoff=(0.125, 0.375), order=2, fs=1.0):
     b, a = _bandpass_ba(cutoff=cutoff, order=order, fs=fs)
     f, h = freqz(b=b, a=a, whole=False, fs=fs)
     # the actual order is 2x the given order since a forward-backward filter is appled
-    da = xr.DataArray( ( h*h.conj() ).astype('float'),
+    da = xr.DataArray(h.real**2 + h.imag**2,
         dims='freq', coords=[f,],
         name='response')
     da.attrs['info'] = f'Butterworth {order}-order forward-backward bandpass response'
