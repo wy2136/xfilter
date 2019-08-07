@@ -13,13 +13,13 @@ class FilterAccessor(object):
         self._obj = da
 
     def lowpass(self, *args, **kw):
-        '''See filter.xarray.butter.lowpass for description.'''
+        '''See xfilter.xarray.butter.lowpass for description.'''
         return butter.lowpass(self._obj, *args, **kw)
 
     def highpass(self, *args, **kw):
-        '''See filter.xarray.butter.highpass for description.'''
+        '''See xfilter.xarray.butter.highpass for description.'''
         return butter.highpass(self._obj, *args, **kw)
 
     def bandpass(self, *args, **kw):
-        '''See filter.xarray.butter.bandpass for description.'''
+        '''See xfilter.xarray.butter.bandpass for description.'''
         return butter.bandpass(self._obj, *args, **kw)
