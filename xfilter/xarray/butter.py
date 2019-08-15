@@ -24,7 +24,7 @@ def lowpass(da, cutoff=0.25, order=2, dim=None, fs=1.0):
         DataArray, lowpassed da.'''
 
     if dim is None:
-        dim = da.dims[0]
+        assert da.ndim == 1, 'only 1-D array is allowed when dim is None; specify dim explicitly otherwise' 
         axis = 0
     else:
         axis = da.dims.index(dim)
@@ -49,7 +49,7 @@ def highpass(da, cutoff=0.25, order=2, dim=None, fs=1.0):
         DataArray, highpassed da.'''
 
     if dim is None:
-        dim = da.dims[0]
+        assert da.ndim == 1, 'only 1-D array is allowed when dim is None; specify dim explicitly otherwise' 
         axis = 0
     else:
         axis = da.dims.index(dim)
@@ -74,7 +74,7 @@ def bandpass(da, cutoff=(0.125, 0.375), order=2, dim=None, fs=1.0):
         DataArray, bandpassed da.'''
 
     if dim is None:
-        dim = da.dims[0]
+        assert da.ndim == 1, 'only 1-D array is allowed when dim is None; specify dim explicitly otherwise' 
         axis = 0
     else:
         axis = da.dims.index(dim)
