@@ -13,7 +13,7 @@ def _lowpass_ba(cutoff=0.25, order=2, fs=1.0):
     low = cutoff / nyq
     b, a = butter(order, low, btype='lowpass')
     return b, a
-def lowpass(X, cutoff=0.25, order=2, axis=0, fs=1.0):
+def lowpass(X, cutoff=0.25, order=2, axis=0, fs=1.0, **kws):
     '''Butterworth lowpass filter.
 
     *Parameters*:
@@ -27,7 +27,7 @@ def lowpass(X, cutoff=0.25, order=2, axis=0, fs=1.0):
         Y: ndarray, lowpassed X.'''
 
     b,a = _lowpass_ba(cutoff=cutoff, order=order, fs=fs)
-    Y = filtfilt(b, a, X, axis=axis)
+    Y = filtfilt(b, a, X, axis=axis, **kws)
     return Y
 
 def _highpass_ba(cutoff=0.25, order=2, fs=1.0):
@@ -36,7 +36,7 @@ def _highpass_ba(cutoff=0.25, order=2, fs=1.0):
     high = cutoff / nyq
     b,a = butter(order, high, btype='highpass')
     return b,a
-def highpass(X, cutoff=0.25, order=2, axis=0, fs=1.0):
+def highpass(X, cutoff=0.25, order=2, axis=0, fs=1.0, **kws):
     '''Butterworth highpass filter.
 
     *Parameters*:
@@ -50,7 +50,7 @@ def highpass(X, cutoff=0.25, order=2, axis=0, fs=1.0):
         Y: ndarray, highpassed X.'''
 
     b,a = _highpass_ba(cutoff=cutoff, order=order, fs=fs)
-    Y = filtfilt(b, a, X, axis=axis)
+    Y = filtfilt(b, a, X, axis=axis, **kws)
     return Y
 
 def _bandpass_ba(cutoff=(0.125, 0.375), order=2, fs=1.0):
@@ -60,7 +60,7 @@ def _bandpass_ba(cutoff=(0.125, 0.375), order=2, fs=1.0):
     high = cutoff[1] / nyq
     b,a = butter(order, [low,high], btype='bandpass')
     return b,a
-def bandpass(X, cutoff=(0.125, 0.375), order=2, axis=0, fs=1.0):
+def bandpass(X, cutoff=(0.125, 0.375), order=2, axis=0, fs=1.0, **kws):
     '''Butterworth bandpass filter.
 
     *Parameters*:
@@ -74,5 +74,5 @@ def bandpass(X, cutoff=(0.125, 0.375), order=2, axis=0, fs=1.0):
         Y: ndarray, highpassed X.'''
 
     b,a = _bandpass_ba(cutoff=cutoff, order=order, fs=fs)
-    Y = filtfilt(b, a, X, axis=axis)
+    Y = filtfilt(b, a, X, axis=axis, **kws)
     return Y
