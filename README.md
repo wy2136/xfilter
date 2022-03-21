@@ -14,7 +14,7 @@ Wrap the forward-backward Butterworth filter from the scipy package so that it c
 		fig, axes = plt.subplots(2, 1)
 		ax = axes[0]
 		da.plot(label='raw', color='k', ax=ax)
-		da.filter.bandpass([1/10, 1/5]).plot(ax=ax)
+		da.filter.bandpass([1/10, 1/5], dim='day').plot(ax=ax)
 		ax.legend(loc='lower right')
 		
 		ax = axes[1]
